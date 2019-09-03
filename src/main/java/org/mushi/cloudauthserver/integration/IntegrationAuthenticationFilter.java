@@ -22,7 +22,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * 1、根据参数获取当前的是认证类型，
+ * 2、根据不同的认证类型调用不同的IntegrationAuthenticator.prepar进行预处理
+ */
 @Component
 public class IntegrationAuthenticationFilter extends GenericFilterBean implements ApplicationContextAware {
 
@@ -33,7 +36,9 @@ public class IntegrationAuthenticationFilter extends GenericFilterBean implement
     private static final String OAUTH_TOKEN_URL = "/oauth/token";
 
     private RequestMatcher requestMatcher;
+
     private ApplicationContext applicationContext;
+
     private Collection<IntegrationAuthenticator> authenticators;
 
     public IntegrationAuthenticationFilter() {
